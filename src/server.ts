@@ -1,3 +1,4 @@
+import { ApolloServerPluginLandingPageGraphQLPlayground } from "apollo-server-core";
 import { ApolloServer } from "apollo-server-express";
 import express from "express";
 import http from "http";
@@ -20,6 +21,7 @@ async function listen(port: string) {
   });
   const server = new ApolloServer({
     schema: schemaWithMocks,
+    plugins: [ApolloServerPluginLandingPageGraphQLPlayground()],
   });
   await server.start();
 
