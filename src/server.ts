@@ -1,4 +1,3 @@
-import { ApolloServerPluginLandingPageProductionDefault } from "apollo-server-core";
 import { ApolloServer } from "apollo-server-express";
 import express from "express";
 import http from "http";
