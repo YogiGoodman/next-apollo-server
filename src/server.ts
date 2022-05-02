@@ -11,7 +11,7 @@ async function listen(port: string) {
   const corsOptions = {
     origin: [
       "http://localhost:3000",
-      "/.vercel.app$/",
+      "/\.vercel\.app$/",
       "https://studio.apollographql.com",
     ],
   };
