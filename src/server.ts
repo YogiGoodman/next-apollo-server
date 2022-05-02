@@ -1,3 +1,4 @@
+import { ApolloServerPluginLandingPageDisabled } from "apollo-server-core";
 import { ApolloServer } from "apollo-server-express";
 import express from "express";
 import http from "http";
@@ -13,8 +14,13 @@ async function listen(port: number) {
       "https://studio.apollographql.com",
     ],
   };
+
+  app.get("/", (req, res) => {
+    res.send("Server Ready. Go to /graphql");
+  });
   const server = new ApolloServer({
     schema: schemaWithMocks,
+    plugins: [ApolloServerPluginLandingPageDisabled()],
   });
   await server.start();
 
