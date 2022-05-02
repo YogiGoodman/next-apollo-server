@@ -3,8 +3,9 @@ import { ApolloServer } from "apollo-server-express";
 import express from "express";
 import http from "http";
 import schemaWithMocks from "./mock";
+const PORT = process.env.PORT || "5000";
 
-async function listen(port: number) {
+async function listen(port: string) {
   const app = express();
   const httpServer = http.createServer(app);
   const corsOptions = {
@@ -16,7 +17,7 @@ async function listen(port: number) {
   };
 
   app.get("/", (req, res) => {
-    res.send("Server Ready. Go to /graphql");
+    res.send(`Server Ready at ${port}`);
   });
   const server = new ApolloServer({
     schema: schemaWithMocks,
@@ -36,8 +37,8 @@ async function listen(port: number) {
 
 async function main() {
   try {
-    await listen(5000);
-    console.log("Server is ready");
+    await listen(PORT);
+    console.log(`Server is ready at ${PORT}`);
   } catch (err) {
     console.error("Error starting the node server", err);
   }
