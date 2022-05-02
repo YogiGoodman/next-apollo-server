@@ -11,7 +11,7 @@ async function listen(port: string) {
   const corsOptions = {
     origin: [
       "http://localhost:3000",
-      `https://nextjs-apollo-2tvjvfepu-yogigoodman.vercel.app/`,
+      `https://nextjs-apollo-2tvjvfepu-yogigoodman.vercel.app`,
       "https://studio.apollographql.com",
     ],
   };
@@ -21,7 +21,6 @@ async function listen(port: string) {
   });
   const server = new ApolloServer({
     schema: schemaWithMocks,
-    plugins: [ApolloServerPluginLandingPageProductionDefault()],
   });
   await server.start();
 
